@@ -1,31 +1,32 @@
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import "./accordion.css";
 function Accordion({ items }) {
-  const [openIndex, setOpenOndex] = useState(null);
+  const [openId, setOpenId] = useState(null);
 
-  const handleToggle = (index) => {
-    setOpenOndex(openIndex == index ? null : index);
+  const handleToggle = (id) => {
+    setOpenId(openId === id ? null : id);
   };
 
   return !items || items.length === 0 ? (
     "No items available"
   ) : (
     <div className="accordion">
-      {items.map((item, index) => {
+      {items.map((item) => {
         return (
-          <div key={index} className="accoudion-item">
+          <div key={item.id} className="accoudion-item">
             <button
               className="accordion-tittle"
-              onClick={() => handleToggle(index)}
+              onClick={() => handleToggle(item.id)}
             >
               {item.tittle}
-              {openIndex === index ? (
+              {openId === item.id ? (
                 <FaChevronUp className="right" />
               ) : (
                 <FaChevronDown className="right" />
               )}
             </button>
-            {openIndex === index && (
+            {openId === item.id && (
               <div className=".accordion-content">{item.content}</div>
             )}
           </div>
