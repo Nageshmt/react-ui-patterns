@@ -1,4 +1,4 @@
-import Accordion from "./ui-patterns/Accordion";
+import Accordion from "./accordion/Accordion";
 
 export default function App() {
   const items = [
